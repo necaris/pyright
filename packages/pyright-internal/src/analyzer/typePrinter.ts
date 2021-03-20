@@ -64,6 +64,10 @@ export const enum PrintTypeFlags {
 
     // Include a parentheses around a callable.
     ParenthesizeCallable = 1 << 7,
+
+    // Include the full name of the module where possible, e.g.
+    // "builtins.int" rather than "int"
+    AbsoluteTypeNames = 1 << 8,
 }
 
 export type FunctionReturnTypeCallback = (type: FunctionType) => Type;
@@ -523,7 +527,10 @@ export function printObjectTypeForClass(
     returnTypeCallback: FunctionReturnTypeCallback,
     recursionTypes: Type[] = []
 ): string {
-    let objName = type.aliasName || type.details.name;
+    let objName =
+        (printTypeFlags & PrintTypeFlags.AbsoluteTypeNames) === 0
+            ? type.details.fullName
+            : type.aliasName || type.details.name;
 
     // If this is a pseudo-generic class, don't display the type arguments
     // or type parameters because it will confuse users.
