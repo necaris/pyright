@@ -79,6 +79,9 @@ export interface DiagnosticRuleSet {
     // type variable type?
     omitConditionalConstraint: boolean;
 
+    // Should we print "absolute" type names e.g. "asyncio.futures.Future" instead of "Future"?
+    absoluteTypeNames: boolean;
+
     // Should Union and Optional types be printed in PEP 604 format?
     pep604Printing: boolean;
 
@@ -389,6 +392,7 @@ export function getOffDiagnosticRuleSet(): DiagnosticRuleSet {
         omitTypeArgsIfAny: true,
         omitUnannotatedParamType: true,
         omitConditionalConstraint: true,
+        absoluteModuleNames: false,
         pep604Printing: true,
         strictListInference: false,
         strictSetInference: false,
@@ -464,6 +468,7 @@ export function getBasicDiagnosticRuleSet(): DiagnosticRuleSet {
         omitTypeArgsIfAny: false,
         omitUnannotatedParamType: true,
         omitConditionalConstraint: false,
+        absoluteModuleNames: false,
         pep604Printing: true,
         strictListInference: false,
         strictSetInference: false,
@@ -539,6 +544,7 @@ export function getStrictDiagnosticRuleSet(): DiagnosticRuleSet {
         omitTypeArgsIfAny: false,
         omitUnannotatedParamType: false,
         omitConditionalConstraint: false,
+        absoluteModuleNames: true,
         pep604Printing: true,
         strictListInference: true,
         strictSetInference: true,
