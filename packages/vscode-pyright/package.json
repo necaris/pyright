@@ -846,7 +846,7 @@
         "detect-indent": "^6.1.0",
         "shx": "^0.3.4",
         "ts-loader": "^9.2.6",
-        "typescript": "~4.4.4",
+        "typescript": "~4.9.5",
         "vsce": "^2.6.4",
         "webpack": "^5.68.0",
         "webpack-cli": "^4.9.2"
